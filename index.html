@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio — Who am i?</title>
+  <title>Portafolio — Hola</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg: #a3433f;
+      --bg: #a5453f;
       --text: #ffffff;
       --module-max: 400px;
-      --photo-size: min(78vw, 300px);
+      --img-width: 78%;
     }
 
     *,
@@ -33,121 +33,56 @@
     .module {
       max-width: var(--module-max);
       margin: 0 auto;
-      padding: clamp(1.25rem, 5vw, 2rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 8vw, 3rem);
+      padding: clamp(0.85rem, 3.5vw, 1.25rem) clamp(1.15rem, 5.5vw, 1.875rem) clamp(2rem, 7vw, 3rem);
     }
 
-    /* Frame 2: W H O columna | am+i junto arriba | ? derecha | foto centrada superpuesta */
-    .hero {
-      position: relative;
+    /* “HOLA” gigante recortada por arriba (solo se ven las bases de H, O…) */
+    .hola-crop {
+      overflow: hidden;
+      height: clamp(3.65rem, 11.5vw, 5.1rem);
+      margin: 0 0 clamp(1.35rem, 4.5vw, 2rem);
     }
 
-    .headline {
-      display: grid;
-      grid-template-columns: max-content 1fr max-content;
-      grid-template-rows: auto auto auto;
-      align-items: start;
-      column-gap: clamp(0.15rem, 1.5vw, 0.5rem);
-      row-gap: 0;
-      padding-right: 0.15rem;
-    }
-
-    .headline__stack {
-      grid-column: 1;
-      grid-row: 1 / 4;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      line-height: 0.82;
-    }
-
-    .headline__stack span {
+    .hola-crop__text {
+      display: block;
       font-weight: 800;
-      font-size: clamp(3.1rem, 17vw, 4.85rem);
-      letter-spacing: -0.035em;
-      line-height: 0.86;
-    }
-
-    .headline__stack .headline__h {
-      margin-top: 0.06em;
-    }
-
-    .headline__stack .headline__o {
-      margin-top: 0.08em;
-    }
-
-    .headline__ami {
-      grid-column: 2;
-      grid-row: 1;
-      display: flex;
-      flex-direction: row;
-      align-items: baseline;
-      gap: 0.1em;
-      padding-top: 0.35em;
-      padding-left: clamp(0.05rem, 1vw, 0.35rem);
-      align-self: start;
-      justify-self: start;
-    }
-
-    .headline__am {
-      font-weight: 700;
-      font-size: clamp(0.95rem, 3.8vw, 1.3rem);
-      letter-spacing: 0.03em;
-      line-height: 1;
-    }
-
-    .headline__i {
-      font-weight: 800;
-      font-size: clamp(2.4rem, 12.5vw, 3.6rem);
-      line-height: 0.85;
-      letter-spacing: -0.02em;
-    }
-
-    .headline__q {
-      grid-column: 3;
-      grid-row: 1 / 4;
-      font-weight: 800;
-      font-size: clamp(3.75rem, 21vw, 6.25rem);
-      line-height: 0.7;
+      font-size: clamp(4.6rem, 25vw, 7rem);
+      line-height: 0.78;
       letter-spacing: -0.04em;
-      justify-self: end;
-      align-self: start;
-      margin-top: 0.02em;
+      color: var(--text);
+      margin-top: clamp(-2.35rem, -7.25vw, -1.55rem);
     }
 
-    .photo-wrap {
+    .feature-photo {
+      margin: 0;
+      padding: 0;
       display: flex;
       justify-content: center;
       width: 100%;
-      margin-top: clamp(-4.25rem, -14vw, -2.5rem);
-      position: relative;
-      z-index: 2;
-      pointer-events: none;
     }
 
-    .photo-wrap img {
-      pointer-events: auto;
-      width: var(--photo-size);
+    .feature-photo img {
+      width: var(--img-width);
+      max-width: 100%;
       height: auto;
       aspect-ratio: 1;
       object-fit: cover;
       display: block;
-      filter: grayscale(100%) contrast(1.08);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+      border: 0;
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.34);
+      filter: contrast(1.05) saturate(0.92);
     }
 
     .body-text {
-      font-size: clamp(0.8125rem, 2.8vw, 0.9375rem);
+      font-size: clamp(0.8125rem, 2.85vw, 0.9375rem);
       font-weight: 400;
-      line-height: 1.75;
+      line-height: 1.5;
       text-align: left;
-      width: 100%;
-      max-width: 100%;
-      margin: clamp(1.1rem, 3.5vw, 1.65rem) 0 0;
-      padding: 0;
+      margin: clamp(1.35rem, 4.5vw, 2rem) 0 0;
     }
 
     .body-text p {
-      margin: 0 0 1em;
+      margin: 0 0 1.15em;
     }
 
     .body-text p:last-child {
@@ -168,44 +103,28 @@
   </style>
 </head>
 <body>
-  <section class="module" aria-labelledby="whoami-heading">
-    <h1 id="whoami-heading" class="visually-hidden">Quién soy</h1>
+  <section class="module" aria-labelledby="module-heading">
+    <h1 id="module-heading" class="visually-hidden">Hola</h1>
 
-    <div class="hero">
-      <div class="headline" aria-hidden="true">
-        <div class="headline__stack">
-          <span class="headline__w">W</span>
-          <span class="headline__h">H</span>
-          <span class="headline__o">O</span>
-        </div>
-        <div class="headline__ami">
-          <span class="headline__am">am</span>
-          <span class="headline__i">i</span>
-        </div>
-        <span class="headline__q">?</span>
-      </div>
-
-      <div class="photo-wrap">
-        <!-- Sustituye images/portrait.jpg por tu export del retrato con la nota (Figma). -->
-        <img
-          src="images/portrait.jpg"
-          alt="Retrato en blanco y negro con nota sobre el rostro"
-          width="800"
-          height="800"
-        />
-      </div>
+    <div class="hola-crop" aria-hidden="true">
+      <span class="hola-crop__text">HOLA</span>
     </div>
+
+    <figure class="feature-photo">
+      <img
+        src="images/module-texture.jpg"
+        alt=""
+        width="800"
+        height="800"
+      />
+    </figure>
 
     <div class="body-text">
       <p>
-        Sebastián Blanco, estudiante de Comunicación Visual en CENTRO Diseño, Cine y Televisión.
-        Me interesa la imagen como lenguaje, el collage y los proyectos editoriales que mezclan
-        humor y crítica ligera.
+        Sebastián Blanco, estudiante de Comunicación Visual en CENTRO Diseño, Cine y Televisión. Me interesa la imagen como lenguaje, el collage y los proyectos editoriales que mezclan humor y crítica ligera.
       </p>
       <p>
-        En este portafolio reúno piezas de identidad, fotografía y piezas digitales donde busco
-        claridad visual sin perder personalidad. Si quieres colaborar o charlar sobre un proyecto,
-        escríbeme.
+        En este portafolio reúno piezas de identidad, fotografía y piezas digitales donde busco claridad visual sin perder personalidad. Si quieres colaborar o charlar sobre un proyecto, escríbeme.
       </p>
     </div>
   </section>
