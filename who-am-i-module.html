@@ -12,7 +12,7 @@
       --bg: #a3433f;
       --text: #ffffff;
       --module-max: 400px;
-      --photo-size: min(72vw, 280px);
+      --photo-size: min(78vw, 300px);
     }
 
     *,
@@ -36,122 +36,113 @@
       padding: clamp(1.25rem, 5vw, 2rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 8vw, 3rem);
     }
 
-    /* Tipografía descompuesta "Who am i?" */
-    .headline {
+    .hero {
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 0.28fr) minmax(0, 1fr) minmax(0, 0.32fr);
-      grid-template-rows: auto auto auto;
-      gap: 0;
-      min-height: clamp(340px, 85vw, 420px);
-      margin-bottom: 0.5rem;
     }
 
-    .headline__w {
+    .headline {
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-rows: auto auto auto;
+      align-items: start;
+      column-gap: clamp(0.15rem, 1.5vw, 0.5rem);
+      row-gap: 0;
+      padding-right: 0.15rem;
+    }
+
+    .headline__stack {
       grid-column: 1;
-      grid-row: 1;
+      grid-row: 1 / 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 0.82;
+    }
+
+    .headline__stack span {
       font-weight: 800;
-      font-size: clamp(3.5rem, 22vw, 5.5rem);
-      line-height: 0.85;
-      letter-spacing: -0.04em;
+      font-size: clamp(3.1rem, 17vw, 4.85rem);
+      letter-spacing: -0.035em;
+      line-height: 0.86;
+    }
+
+    .headline__stack .headline__h {
+      margin-top: 0.06em;
+    }
+
+    .headline__stack .headline__o {
+      margin-top: 0.08em;
+    }
+
+    .headline__ami {
+      grid-column: 2;
+      grid-row: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0.1em;
+      padding-top: 0.35em;
+      padding-left: clamp(0.05rem, 1vw, 0.35rem);
       align-self: start;
       justify-self: start;
-    }
-
-    .headline__h {
-      grid-column: 1;
-      grid-row: 2;
-      font-weight: 800;
-      font-size: clamp(3rem, 18vw, 4.5rem);
-      line-height: 1;
-      transform: rotate(-90deg);
-      transform-origin: center center;
-      align-self: center;
-      justify-self: start;
-      margin-left: -0.15em;
-      margin-top: -0.35em;
-    }
-
-    .headline__o {
-      grid-column: 1;
-      grid-row: 3;
-      font-weight: 800;
-      font-size: clamp(2.75rem, 16vw, 4rem);
-      line-height: 1;
-      transform: rotate(-90deg);
-      transform-origin: center center;
-      align-self: end;
-      justify-self: start;
-      margin-left: 0.02em;
-      margin-bottom: 0.5rem;
     }
 
     .headline__am {
-      grid-column: 2;
-      grid-row: 1;
-      align-self: end;
-      justify-self: center;
       font-weight: 700;
-      font-size: clamp(1.35rem, 5.5vw, 1.75rem);
-      letter-spacing: 0.02em;
-      z-index: 1;
-      margin-bottom: -0.35em;
-      padding-bottom: 0.35em;
-    }
-
-    .headline__photo-wrap {
-      grid-column: 2;
-      grid-row: 2 / span 2;
-      align-self: center;
-      justify-self: center;
-      z-index: 2;
-      width: var(--photo-size);
-      aspect-ratio: 1;
-      margin-top: -0.5rem;
-    }
-
-    .headline__photo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: grayscale(100%) contrast(1.05);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+      font-size: clamp(0.95rem, 3.8vw, 1.3rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
     }
 
     .headline__i {
-      grid-column: 3;
-      grid-row: 2;
       font-weight: 800;
-      font-size: clamp(3.25rem, 20vw, 5rem);
-      line-height: 0.9;
-      align-self: start;
-      justify-self: start;
-      margin-left: -0.08em;
-      margin-top: 0.15em;
+      font-size: clamp(2.4rem, 12.5vw, 3.6rem);
+      line-height: 0.85;
+      letter-spacing: -0.02em;
     }
 
     .headline__q {
       grid-column: 3;
-      grid-row: 2 / span 2;
+      grid-row: 1 / 4;
       font-weight: 800;
-      font-size: clamp(4rem, 26vw, 6.5rem);
-      line-height: 0.75;
-      align-self: center;
-      justify-self: start;
-      margin-left: 0.05em;
-      margin-top: 0.35em;
+      font-size: clamp(3.75rem, 21vw, 6.25rem);
+      line-height: 0.7;
+      letter-spacing: -0.04em;
+      justify-self: end;
+      align-self: start;
+      margin-top: 0.02em;
+    }
+
+    .photo-wrap {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: clamp(-4.25rem, -14vw, -2.5rem);
+      position: relative;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .photo-wrap img {
+      pointer-events: auto;
+      width: var(--photo-size);
+      height: auto;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%) contrast(1.08);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
     }
 
     .body-text {
       font-size: clamp(0.8125rem, 2.8vw, 0.9375rem);
       font-weight: 400;
       line-height: 1.75;
-      text-align: justify;
-      hyphens: auto;
+      text-align: left;
       width: 100%;
-      max-width: var(--photo-size);
-      margin: 1.25rem auto 0;
+      max-width: 100%;
+      margin: clamp(1.1rem, 3.5vw, 1.65rem) 0 0;
+      padding: 0;
     }
 
     .body-text p {
@@ -178,23 +169,30 @@
 <body>
   <section class="module" aria-labelledby="whoami-heading">
     <h1 id="whoami-heading" class="visually-hidden">Quién soy</h1>
-    <div class="headline" aria-hidden="true">
-      <span class="headline__w">W</span>
-      <span class="headline__h">H</span>
-      <span class="headline__o">o</span>
-      <span class="headline__am">am</span>
-      <div class="headline__photo-wrap">
-        <!-- Sustituye src por la imagen del diseño (retrato con nota). -->
+
+    <div class="hero">
+      <div class="headline" aria-hidden="true">
+        <div class="headline__stack">
+          <span class="headline__w">W</span>
+          <span class="headline__h">H</span>
+          <span class="headline__o">O</span>
+        </div>
+        <div class="headline__ami">
+          <span class="headline__am">am</span>
+          <span class="headline__i">i</span>
+        </div>
+        <span class="headline__q">?</span>
+      </div>
+
+      <div class="photo-wrap">
+        <!-- Sustituye images/portrait.jpg por tu export del retrato con la nota (Figma). -->
         <img
-          class="headline__photo"
-          src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&h=600&fit=crop&auto=format&q=80"
-          alt="Retrato en blanco y negro"
-          width="600"
-          height="600"
+          src="images/portrait.jpg"
+          alt="Retrato en blanco y negro con nota sobre el rostro"
+          width="800"
+          height="800"
         />
       </div>
-      <span class="headline__i">i</span>
-      <span class="headline__q">?</span>
     </div>
 
     <div class="body-text">
