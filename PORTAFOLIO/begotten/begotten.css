@@ -1,0 +1,235 @@
+/* ═══════════════════════════════════════════════════════
+   PORTAFOLIO SEBB — Módulo "Begotten"
+   Fonts  : Jim Nightshade · Intel One Mono · Inter (400)
+   Canvas : 1936 × 5720 px  (Figma)
+   Escala : todo en vw  →  valor_vw = figma_px / 1936 * 100
+   Altura : 5720 / 1936 * 100 = 295.45 vw
+═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Space+Mono&family=Inter:wght@400&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  background: #272323;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   WRAPPER
+   Altura fija en vw para mantener proporciones
+   del canvas Figma 1936 × 5720 px.
+   5720 / 1936 * 100 = 295.45 vw
+══════════════════════════════════════════ */
+.frame {
+  position: relative;
+  width: 100%;
+  height: 295.45vw;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════
+   FONDO  node 129:8
+   #272323  full canvas
+══════════════════════════════════════════ */
+.bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #272323;
+  z-index: 0;
+}
+
+/* ══════════════════════════════════════════
+   TÍTULO "Begotten"
+   Jim Nightshade 200px, text-right
+   Figma: left=616.91 translateX(-100%) w=541 top=68
+   visual left = 616.91-541 = 75.91
+   vw: left=3.92  top=3.51  w=27.95  fs=10.33
+══════════════════════════════════════════ */
+.title {
+  position: absolute;
+  left:   3.92vw;
+  top:    3.51vw;
+  width: 27.95vw;
+  /* Jim Nightshade no está en Google Fonts;
+     Uncial Antiqua es la alternativa más cercana disponible */
+  font-family: 'Jim Nightshade', 'Uncial Antiqua', cursive;
+  font-size: clamp(28px, 10.33vw, 200px);
+  font-weight: 400;
+  color: #fff;
+  text-align: right;
+  line-height: 1;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════
+   SUBTÍTULO "Video arte: Proyecto final…"
+   Intel One Mono 40px, text-right
+   Figma: left=calc(50%+842.91px)=1810.91 translateX(-100%) w=1063 top=249
+   visual left = 1810.91-1063 = 747.91
+   vw: left=38.63  top=12.86  w=54.90  fs=2.07
+══════════════════════════════════════════ */
+.subtitle {
+  position: absolute;
+  left:  38.63vw;
+  top:   12.86vw;
+  width: 54.90vw;
+  font-family: 'Intel One Mono', 'Space Mono', monospace;
+  font-size: clamp(10px, 2.07vw, 40px);
+  font-weight: 400;
+  color: #fff;
+  text-align: right;
+  line-height: 1.35;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* ══════════════════════════════════════════
+   VIDEO / IMAGEN PRINCIPAL
+   node 380:30  left=99 top=572 w=1736 h=979
+   vw: left=5.11 top=29.55 w=89.67 h=50.57
+══════════════════════════════════════════ */
+.main-video {
+  position: absolute;
+  left:   5.11vw;
+  top:   29.55vw;
+  width:  89.67vw;
+  height: 50.57vw;
+  object-fit: cover;
+  display: block;
+  z-index: 3;
+}
+
+/* ══════════════════════════════════════════
+   DESCRIPCIÓN LARGA (columna derecha)
+   node 218:2
+   Figma: left=1835 translateX(-100%) w=517 top=1752
+   visual left = 1835-517 = 1318
+   vw: left=68.08  top=90.50  w=26.70
+   Inter 400  text-right
+   <p> : 18px @1280 · 20px @1440 · 28px @1936 (fluid entre 1280–1936)
+══════════════════════════════════════════ */
+.desc-long {
+  position: absolute;
+  left:  68.08vw;
+  top:   90.50vw;
+  width: 26.70vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  text-align: right;
+  line-height: 1.6;
+  z-index: 4;
+}
+@media (min-width: 1440px) {
+  .desc-long {
+    font-size: clamp(
+      20px,
+      calc(20px + (100vw - 1440px) * 8 / 496),
+      28px
+    );
+  }
+}
+.desc-long p            { margin-bottom: 1.2em; }
+.desc-long p:last-child { margin-bottom: 0; }
+
+/* ══════════════════════════════════════════
+   FILAS DE FRAMES (imagen izquierda + caption derecha)
+   node 391:48
+
+   Imagen: left=99→5.11vw  w≈855→44.16vw
+   Caption: left=979→50.57vw  w=189→9.76vw
+   <p> proporcional: 7px @1280 · 8px @1440 · 11px @1936
+══════════════════════════════════════════ */
+
+/* Contenedor de cada fila */
+.row {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+/* Imagen del frame */
+.row-img {
+  position: absolute;
+  left:  5.11vw;
+  width: 44.16vw;
+  object-fit: cover;
+  display: block;
+}
+
+/* Caption lateral */
+.row-cap {
+  position: absolute;
+  left:  50.57vw;
+  width:  9.76vw;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 7px;
+  color: #fff;
+  line-height: 1.55;
+  text-align: left;
+}
+@media (min-width: 1440px) {
+  .row-cap {
+    font-size: clamp(
+      8px,
+      calc(8px + (100vw - 1440px) * 3 / 496),
+      11px
+    );
+  }
+}
+.row-cap p            { margin-bottom: 0.8em; }
+.row-cap p:last-child { margin-bottom: 0; }
+
+/* ── Posiciones y alturas de cada fila
+   vw = figma_top / 1936 * 100              ── */
+
+/* Row 1  top=1752  h=482
+   vw: top=90.50  h=24.90 */
+.row-1          { top: 90.50vw; height: 24.90vw; }
+.row-1 .row-img { height: 24.90vw; }
+.row-1 .row-cap { top: 0.26vw; }   /* caption offset: (1757-1752)/1936*100 */
+
+/* Row 2  top=2293  h=478
+   vw: top=118.44  h=24.69 */
+.row-2          { top: 118.44vw; height: 24.69vw; }
+.row-2 .row-img { height: 24.69vw; }
+.row-2 .row-cap { top: 0; }
+
+/* Row 3  top=2831  h=478
+   vw: top=146.23  h=24.69 */
+.row-3          { top: 146.23vw; height: 24.69vw; }
+.row-3 .row-img { height: 24.69vw; border: 1px solid #000; }
+.row-3 .row-cap { top: 0; }
+
+/* Row 4  top=3369  h=479
+   vw: top=174.02  h=24.74 */
+.row-4          { top: 174.02vw; height: 24.74vw; }
+.row-4 .row-img { height: 24.74vw; }
+.row-4 .row-cap { top: 0; }
+
+/* Row 5  top=3906  h=481
+   vw: top=201.76  h=24.85 */
+.row-5          { top: 201.76vw; height: 24.85vw; }
+.row-5 .row-img { height: 24.85vw; }
+.row-5 .row-cap { top: 0; }
+
+/* Row 6  top=4446  h=478
+   vw: top=229.65  h=24.69 */
+.row-6          { top: 229.65vw; height: 24.69vw; }
+.row-6 .row-img { height: 24.69vw; }
+.row-6 .row-cap { top: 0; }
+
+/* Row 7  top=4984  h=478
+   vw: top=257.44  h=24.69 */
+.row-7          { top: 257.44vw; height: 24.69vw; }
+.row-7 .row-img { height: 24.69vw; }
+.row-7 .row-cap { top: 0; }
