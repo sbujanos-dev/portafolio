@@ -1,0 +1,218 @@
+/* ═══════════════════════════════════════════════════════
+   PORTAFOLIO SEBB — Sección "WHO am i?"
+   Figma canvas : 1936 × 4840 px
+   Fuente       : Inter (400)
+   Paleta       : #a23b3b fondo · #fff texto
+   ═══════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%;
+  background: #000;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   SECCIÓN WRAPPER
+   Mantiene las proporciones del canvas Figma
+   1936 × 4840 → escalamos con padding-top trick
+   para que todo sea proporcional al ancho.
+   Usamos min-height para que no colapse.
+══════════════════════════════════════════ */
+.whoami-section {
+  position: relative;
+  width: 100%;
+  background: #a23b3b;
+  /* No usamos aspect-ratio fijo porque el contenido
+     es muy largo; dejamos que crezca naturalmente */
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════
+   TIPOGRAFÍA GIGANTE DE FONDO
+   Letras: W H O  /  a m  /  i  /  ?
+   Posiciones escaladas desde Figma px → %
+   Canvas width: 1936px  height: 4840px
+══════════════════════════════════════════ */
+
+/* Grupo que contiene todas las letras decorativas */
+.bg-letters {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Base compartida */
+.bg-letter {
+  position: absolute;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+  /* Semitransparente para que no compita con el texto */
+  opacity: 0.12;
+}
+
+/* ── W H O  (columna izquierda, apiladas)
+   Figma: left=73px → 3.77%
+   Cada letra 638.358px / 1936 = 32.97vw aprox
+   top W ≈ 278px → 5.74% of 4840
+   H y O se apilan debajo ──────────────────── */
+.bg-who {
+  left: 3.77%;
+  top:  5.74%;
+  font-size: clamp(80px, 32.97vw, 638px);
+  line-height: 0.88;
+  opacity: 0.12;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── am  (centro, más abajo)
+   Figma: left=602px → 31.09%
+   top=723px → 14.94%
+   "a" 425.572px / 1936 = 21.98vw
+   "m" 319.179px / 1936 = 16.49vw ──────────── */
+.bg-am {
+  left: 31.09%;
+  top:  14.94%;
+  font-size: 0; /* reset; cada span tiene su tamaño */
+  opacity: 0.12;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.bg-am .ltr-a {
+  font-size: clamp(50px, 21.98vw, 425px);
+  display: inline-block;
+  vertical-align: baseline;
+}
+.bg-am .ltr-m {
+  font-size: clamp(40px, 16.49vw, 319px);
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+/* ── i  (derecha, casi la altura completa)
+   Figma: left=1066.92px → 55.11%
+   top=217px → 4.48%
+   font-size 1489.502px / 1936 ≈ 76.93vw ──── */
+.bg-i {
+  left: 55.11%;
+  top:  4.48%;
+  font-size: clamp(100px, 76.93vw, 1489px);
+  opacity: 0.12;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ── ?  (extremo derecho)
+   Figma: left=1309.37px → 67.63%
+   top=434.04px → 8.97%
+   font-size 1340.552px / 1936 ≈ 69.24vw ──── */
+.bg-question {
+  left: 67.63%;
+  top:  8.97%;
+  font-size: clamp(100px, 69.24vw, 1340px);
+  opacity: 0.12;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+}
+
+/* ══════════════════════════════════════════
+   CONTENIDO: título visible + texto biográfico
+   Figma: left=378px → 19.52%
+          top texto bio = 2603px → 53.78% of 4840
+          width = 1125px → 58.11%
+══════════════════════════════════════════ */
+.whoami-content {
+  position: relative;
+  z-index: 2;
+  /* padding que replica las coordenadas Figma
+     Usamos vw para escalar junto al diseño */
+  padding: 8vw 0 8vw 19.52%;
+  width: 77.63%; /* left 19.52% + content 58.11% */
+  max-width: 1200px;
+}
+
+/* ── Título "WHO am i?" visible ── */
+.whoami-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  color: #fff;
+  line-height: 0.88;
+  /* Se muestra encima de las letras de fondo en tamaño legible */
+  font-size: clamp(56px, 14vw, 260px);
+  margin-bottom: 10vw;
+  letter-spacing: -0.02em;
+}
+.whoami-title .line-who   { display: block; }
+.whoami-title .line-am    { display: block; padding-left: 18%; }
+.whoami-title .line-i     { display: block; padding-left: 8%;
+                             font-size: clamp(70px, 20vw, 380px); }
+.whoami-title .line-q     { display: block; text-align: right;
+                             font-size: clamp(80px, 22vw, 420px);
+                             padding-right: 5%; }
+
+/* ── Bio texto ── */
+.whoami-bio {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(13px, 1.4vw, 27px);
+  color: #fff;
+  line-height: 1.65;
+  width: 100%;
+}
+
+.whoami-bio p {
+  margin-bottom: 1.4em;
+}
+.whoami-bio p:last-child {
+  margin-bottom: 0;
+}
+/* Empty paragraphs used as spacers */
+.whoami-bio p:empty {
+  display: none;
+}
+
+/* ══════════════════════════════════════════
+   Responsive
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .whoami-content {
+    padding: 12vw 6vw 12vw 6vw;
+    width: 100%;
+  }
+  .whoami-title {
+    font-size: clamp(48px, 18vw, 160px);
+    margin-bottom: 14vw;
+  }
+  .whoami-title .line-i { font-size: clamp(60px, 24vw, 200px); }
+  .whoami-title .line-q { font-size: clamp(70px, 28vw, 240px); }
+}
